@@ -1,0 +1,22 @@
+rules:
+  - id: laravel-no-request-all-update
+    message: "Avoid mass assignment via $request->all() in update/create. Use validated allowlists + model fillable."
+    severity: ERROR
+    languages: [php]
+    patterns:
+      - pattern: $X->update($REQ->all(...))
+    metadata:
+      category: security
+      cwe: "CWE-915: Improperly Controlled Modification of Dynamically-Determined Object Attributes"
+      owasp: "A01: Broken Access Control"
+      technology: laravel
+
+  - id: laravel-no-guarded-empty
+    message: "Do not set protected $guarded = []; this enables mass assignment of sensitive fields."
+    severity: ERROR
+    languages: [php]
+    pattern: protected $guarded = [];
+    metadata:
+      category: security
+      cwe: "CWE-915"
+      technology: laravel

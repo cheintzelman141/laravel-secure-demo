@@ -2,6 +2,12 @@
 
 This repository demonstrates a realistic Laravel application vulnerability where improper mass assignment allows a normal user to escalate privileges by modifying protected fields (e.g., role=admin) during a profile update.
 
+“Vulnerable branch: vuln https://github.com/cheintzelman141/laravel-secure-demo/tree/vuln
+
+Secure branch: main https://github.com/cheintzelman141/laravel-secure-demo/tree/main
+
+
+
 The project includes:
 
 a vulnerable implementation (vulnerable branch)

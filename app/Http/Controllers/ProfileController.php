@@ -18,10 +18,11 @@ class ProfileController extends Controller
     {
         $user = $request->attributes->get('demo_user');
         if ($request->has('role')) {
-            // Log attempt (optional) — do not throw, just ignore
-
-            Log::info('Role attempt:', ['email' => $user->email, 'role' => $request->input('role')]);
-            return redirect()->route('profile.edit')->with('status', '');
+            Log::warning('Mass assignment attempt: role field submitted', [
+                'email' => $user->email,
+                'submitted_role' => $request->input('role'),
+                'ip' => $request->ip(),
+            ]);
         }
         $validated = $request->validate([
             'name'  => ['required', 'string', 'max:255'],
